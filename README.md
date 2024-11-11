@@ -159,3 +159,17 @@ type res = { a: number; c: boolean } extends ObjType ? true : false; // type res
 // 注意：同一类型可以合并，不同的类型没法合并，会被舍弃（never）
 type res2 = 'aaa' & 222; // type res2 = never
 ```
+
+### 映射类型、索引查询、索引访问
+
+**映射类型** 可以对对象、class 这种索引类型的 key、value 做出修改
+
+```typescript
+type MapType<T> = {
+  [Key in keyof T]?: T[Key];
+};
+```
+
+- `keyof T` 是查询索引类型中所有的索引，叫做 **索引查询**
+- `T[Key]` 是取索引类型某个索引的值，叫做 **索引访问**
+
