@@ -173,3 +173,15 @@ type MapType<T> = {
 - `keyof T` 是查询索引类型中所有的索引，叫做 **索引查询**
 - `T[Key]` 是取索引类型某个索引的值，叫做 **索引访问**
 
+### 遍历（in）
+
+in 是用于遍历联合类型的运算符
+
+```typescript
+// 把一个索引类型的值变成 3 个元素的数组
+type MapType<T> = {
+    [Key in keyof T]: [T[Key], T[Key], T[Key]]
+}
+
+type res = MapType<{a: 1, b: 2}>; // type res = { a: [1, 1, 1]; b: [2, 2, 2]; }
+```
