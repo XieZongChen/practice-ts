@@ -6,15 +6,15 @@
 
 ## ts 的类型
 
-基础类型：number、boolean、string、object、bigint、symbol、undefined、null
+**基础类型**：`number`、`boolean`、`string`、`object`、`bigint`、`symbol`、`undefined`、`null`
 
-包装类型：Number、Boolean、String、Object、Symbol
+**包装类型**：`Number`、`Boolean`、`String`、`Object`、`Symbol`
 
-复合类型：class、Array、Tuple（元组）、Interface（接口）、Enum（枚举）、字面量类型
+**复合类型**：`class`、`Array`、Tuple（元组）、`interface`（接口）、`enum`（枚举）、字面量类型
 
-特殊类型：void、never、any、unknown
+**特殊类型**：`void`、`never`、`any`、`unknown`
 
-属性修饰：?（可选）、readonly
+**属性修饰**：`?`（可选）、`readonly`
 
 ### 接口类型示例
 
@@ -80,9 +80,9 @@ func('#aaa'); // 正确
 
 ### 特殊类型的含义区别
 
-- **never** 代表不可达，比如函数抛异常的时候，返回值就是 never。
-- **void** 代表空，可以是 undefined 或 never。
-- **any** 是任意类型，任何类型都可以赋值给它，它也可以赋值给任何类型（除了 never）。
+- **never** 代表不可达，比如函数抛异常的时候，返回值就是 `never`。
+- **void** 代表空，可以是 `undefined` 或 `never`。
+- **any** 是任意类型，任何类型都可以赋值给它，它也可以赋值给任何类型（除了 `never`）。
 - **unknown** 是未知类型，任何类型都可以赋值给它，但是它不可以赋值给别的类型。
 
 ### 属性修饰示例
@@ -99,4 +99,22 @@ type tuple = [string, number?];
 
 // 函数参数的属性修饰，可选属性可以用 = 设置默认值
 function func(str?: string = '1') {}
+```
+
+## ts 的类型运算
+
+ts 可以通过泛型 `<T>` 以及下面的运算符来进行类型的运算操作。
+
+**高级类型**：通过 `<T>` 传入类型参数，经过一系列类型运算逻辑后，返回新的类型
+
+### 条件类型（Conditional Type）- extends ? :
+
+```typescript
+// 静态运算
+type res = 1 extends 2 ? true : false; // type res = false
+
+// 动态运算
+type isTwo<T> = T extends 2 ? true: false;
+type res = isTwo<1>; // type res = false
+type res2 = isTwo<2>; // type res2 = true
 ```
