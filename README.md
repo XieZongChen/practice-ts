@@ -147,3 +147,15 @@ type res = First<[1, 2, 3]>; // type res = 1
 type Union = 1 | 2 | 3;
 ```
 
+### 交叉（ & ）
+
+交叉类型（Intersection）类似 js 中的与运算符 &，但是作用于类型，代表对类型做合并
+
+```typescript
+type ObjType = {a: number } & {c: boolean};
+
+type res = {a: number, c: boolean} extends ObjType ? true : false // type res = true
+
+// 注意：同一类型可以合并，不同的类型没法合并，会被舍弃（never）
+type res2 = 'aaa' & 222; // type res2 = never
+```
