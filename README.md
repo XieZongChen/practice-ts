@@ -14,65 +14,89 @@
 
 特殊类型：void、never、any、unknown
 
+属性修饰：?（可选）、readonly
+
 ### 接口类型示例
 
 ```typescript
 // 描述对象
 interface IPerson {
-    name: string;
-    age: number;
+  name: string;
+  age: number;
 }
 
 class Person implements IPerson {
-    name: string;
-    age: number;
+  name: string;
+  age: number;
 }
 
 const obj: IPerson = {
-    name: 'guang',
-    age: 18
-}
+  name: 'guang',
+  age: 18,
+};
 
-// 描述对象的索引签名 
+// 描述对象的索引签名
 interface IPerson {
-    [prop: string]: string | number;
+  [prop: string]: string | number;
 }
 
-const obj:IPerson = {};
+const obj: IPerson = {};
 obj.name = 'guang';
 obj.age = 18;
 
 // 描述函数
 interface SayHello {
-    (name: string): string;
+  (name: string): string;
 }
 
 const func: SayHello = (name: string) => {
-    return 'hello,' + name
-}
+  return 'hello,' + name;
+};
 
 // 描述构造器
 interface PersonConstructor {
-    new (name: string, age: number): IPerson;
+  new (name: string, age: number): IPerson;
 }
 
-function createPerson(ctor: PersonConstructor):IPerson {
-    return new ctor('guang', 18);
+function createPerson(ctor: PersonConstructor): IPerson {
+  return new ctor('guang', 18);
 }
-
 ```
 
 ### 字面量类型示例
 
 ```typescript
 // 普通字符串字面量
-const a:'aaa' = 'aaa'
+const a: 'aaa' = 'aaa';
 
 // 模板字面量
-function func(str: `#${string}`){
-    // 接受参数为以 # 开头，后面是任意 string 的字符串
+function func(str: `#${string}`) {
+  // 接受参数为以 # 开头，后面是任意 string 的字符串
 }
 
-func('aaa') // 报错
-func('#aaa') // 正确
+func('aaa'); // 报错
+func('#aaa'); // 正确
+```
+
+### 特殊类型的含义区别
+
+- **never** 代表不可达，比如函数抛异常的时候，返回值就是 never。
+- **void** 代表空，可以是 undefined 或 never。
+- **any** 是任意类型，任何类型都可以赋值给它，它也可以赋值给任何类型（除了 never）。
+- **unknown** 是未知类型，任何类型都可以赋值给它，但是它不可以赋值给别的类型。
+
+### 属性修饰示例
+
+```typescript
+// 对象的属性修饰
+interface IPerson {
+  readonly name: string;
+  age?: number;
+}
+
+// 元组的属性修饰
+type tuple = [string, number?];
+
+// 函数参数的属性修饰，可选属性可以用 = 设置默认值
+function func(str?: string = '1') {}
 ```
