@@ -138,3 +138,12 @@ type First<Tuple extends unknown[]> = Tuple extends [infer T, ...infer R]
 
 type res = First<[1, 2, 3]>; // type res = 1
 ```
+
+### 联合（ | ）
+
+联合类型（Union）类似 js 里的或运算符 |，但是作用于类型，代表类型可以是几个类型之一
+
+```typescript
+type Union = 1 | 2 | 3;
+```
+
