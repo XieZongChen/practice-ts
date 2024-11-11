@@ -107,14 +107,34 @@ ts 可以通过泛型 `<T>` 以及下面的运算符来进行类型的运算操�
 
 **高级类型**：通过 `<T>` 传入类型参数，经过一系列类型运算逻辑后，返回新的类型
 
-### 条件类型（Conditional Type）- extends ? :
+### 条件（extends ? :）
+
+**注意**：单独的 `extends` 可以用做约束（继承），只有和 `? :` 一起使用时才做条件
 
 ```typescript
 // 静态运算
 type res = 1 extends 2 ? true : false; // type res = false
 
 // 动态运算
-type isTwo<T> = T extends 2 ? true: false;
+type isTwo<T> = T extends 2 ? true : false;
 type res = isTwo<1>; // type res = false
 type res2 = isTwo<2>; // type res2 = true
+```
+
+### 推导（infer）
+
+提取类型的一部分
+
+```typescript
+/**
+ * 提取元组类型的第一个元素
+ * - `Tuple extends unknown[]` 约束泛型只能为任意元素类型的数组类型
+ * - `[infer T, ...infer R]` 表示将元组第一个元素提取为 T，剩下的元素提取为 R
+ * - 条件判断如果能提取出内容，则返回 T 类型，否则返回 never 类型
+ */
+type First<Tuple extends unknown[]> = Tuple extends [infer T, ...infer R]
+  ? T
+  : never;
+
+type res = First<[1, 2, 3]>; // type res = 1
 ```
