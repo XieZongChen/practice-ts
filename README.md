@@ -180,8 +180,25 @@ in 是用于遍历联合类型的运算符
 ```typescript
 // 把一个索引类型的值变成 3 个元素的数组
 type MapType<T> = {
-    [Key in keyof T]: [T[Key], T[Key], T[Key]]
-}
+  [Key in keyof T]: [T[Key], T[Key], T[Key]];
+};
 
-type res = MapType<{a: 1, b: 2}>; // type res = { a: [1, 1, 1]; b: [2, 2, 2]; }
+type res = MapType<{ a: 1; b: 2 }>; // type res = { a: [1, 1, 1]; b: [2, 2, 2]; }
 ```
+
+### 重映射（as）
+
+```typescript
+// 将遍历中的示例结果的 key 重映射为别的
+type MapType<T> = {
+  [Key in keyof T as `${Key & string}${Key & string}${Key & string}`]: [
+    T[Key],
+    T[Key],
+    T[Key]
+  ];
+};
+
+type res = MapType<{ a: 1; b: 2 }>; // type res = { aaa: [1, 1, 1]; bbb: [2, 2, 2]; }
+```
+
+**注意**：因为索引类型（对象、`class` 等）可以用 `string`、`number` 和 `symbol` 作为 key，所以上面示例 `keyof T` 取出的索引就是 `string | number | symbol` 的联合类型。`Key & string` 中使用 `&` 和 `string` 取交叉部分就可以只剩下 `string` 了。交叉类型会把同一类型做合并，不同类型舍弃。
