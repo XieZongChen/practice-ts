@@ -10,9 +10,9 @@
 
 包装类型：Number、Boolean、String、Object、Symbol
 
-复合类型：class、Array、Tuple（元组）、Interface（接口）、Enum（枚举）
+复合类型：class、Array、Tuple（元组）、Interface（接口）、Enum（枚举）、字面量类型
 
-特殊类型：字面量类型、void、never、any、unknown
+特殊类型：void、never、any、unknown
 
 ### 接口类型示例
 
@@ -37,6 +37,7 @@ const obj: IPerson = {
 interface IPerson {
     [prop: string]: string | number;
 }
+
 const obj:IPerson = {};
 obj.name = 'guang';
 obj.age = 18;
@@ -59,4 +60,19 @@ function createPerson(ctor: PersonConstructor):IPerson {
     return new ctor('guang', 18);
 }
 
+```
+
+### 字面量类型示例
+
+```typescript
+// 普通字符串字面量
+const a:'aaa' = 'aaa'
+
+// 模板字面量
+function func(str: `#${string}`){
+    // 接受参数为以 # 开头，后面是任意 string 的字符串
+}
+
+func('aaa') // 报错
+func('#aaa') // 正确
 ```
