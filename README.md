@@ -202,3 +202,20 @@ type res = MapType<{ a: 1; b: 2 }>; // type res = { aaa: [1, 1, 1]; bbb: [2, 2, 
 ```
 
 **注意**：因为索引类型（对象、`class` 等）可以用 `string`、`number` 和 `symbol` 作为 key，所以上面示例 `keyof T` 取出的索引就是 `string | number | symbol` 的联合类型。`Key & string` 中使用 `&` 和 `string` 取交叉部分就可以只剩下 `string` 了（**交叉类型会把同一类型做合并，不同类型舍弃**）。
+
+## 模式匹配
+
+**Typescript 类型的模式匹配** 是通过 extends 对类型参数做匹配，结果保存到通过 infer 声明的局部类型变量里，如果匹配就能从该局部变量里拿到提取出的类型。
+
+```typescript
+// js 中的模式匹配，`$1` 可以取到提取的子组
+'abc'.replace(/a(b)c/, '$1,$1,$1'); // 'b,b,b'
+
+/**
+ * 提取 `Promise<T>` 的 `T` 类型
+ * - 通过 extends 对传入的类型参数 P 做模式匹配，其中值的类型是需要提取的
+ * - 通过 infer 声明一个局部变量 Value 来保存，如果匹配，就返回匹配到的 Value，否则就返回 never 代表没匹配到
+ */
+type GetValueType<P> = P extends Promise<infer Value> ? Value : never;
+type GetValueRes = GetValueType<Promise<'test'>>; // type GetValueRes = 'test'
+```
