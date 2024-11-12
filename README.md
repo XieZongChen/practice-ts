@@ -225,6 +225,7 @@ type GetValueRes = GetValueType<Promise<'test'>>; // type GetValueRes = 'test'
 #### 匹配第一个元素
 
 ```typescript
-type GetFirst<Arr extends unknown[]> = 
-    Arr extends [infer First, ...unknown[]] ? First : never;
+type GetFirst<Arr extends unknown[]> = Arr extends [infer First, ...unknown[]]
+  ? First
+  : never;
 ```
