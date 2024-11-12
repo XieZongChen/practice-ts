@@ -219,3 +219,12 @@ type res = MapType<{ a: 1; b: 2 }>; // type res = { aaa: [1, 1, 1]; bbb: [2, 2, 
 type GetValueType<P> = P extends Promise<infer Value> ? Value : never;
 type GetValueRes = GetValueType<Promise<'test'>>; // type GetValueRes = 'test'
 ```
+
+### 数组类型
+
+#### 匹配第一个元素
+
+```typescript
+type GetFirst<Arr extends unknown[]> = 
+    Arr extends [infer First, ...unknown[]] ? First : never;
+```
