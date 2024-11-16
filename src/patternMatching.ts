@@ -15,4 +15,15 @@
    */
   type GetValueType<P> = P extends Promise<infer Value> ? Value : never;
   type GetValueRes = GetValueType<Promise<'test'>>;
+
+  /**
+   * 提取数组类型第一个元素的类型
+   * - 类型参数 Arr 通过 extends 约束为只能是数组类型，unknown 表示数组元素可以是任何值
+   * - 对 Arr 做模式匹配，把我们要提取的第一个元素的类型放到通过 infer 声明的 First 局部变量里，
+   *   后面的元素可以是任何类型，用 unknown 接收，然后把局部变量 First 返回
+   */
+  type GetFirst<Arr extends unknown[]> = Arr extends [infer First, ...unknown[]]
+    ? First
+    : never;
+  type FirstArray = GetFirst<[1, 2, 3]>;
 })();
