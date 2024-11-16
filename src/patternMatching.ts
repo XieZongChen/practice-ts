@@ -25,5 +25,13 @@
   type GetFirst<Arr extends unknown[]> = Arr extends [infer First, ...unknown[]]
     ? First
     : never;
-  type FirstArray = GetFirst<[1, 2, 3]>;
+  type GetFirstRes = GetFirst<[1, 2, 3]>;
+
+  /**
+   * 提取数组类型最后一个元素的类型
+   */
+  type GetLast<Arr extends unknown[]> = Arr extends [...unknown[], infer Last]
+    ? Last
+    : never;
+  type GetLastRes = GetLast<[1, 2, 3]>;
 })();
