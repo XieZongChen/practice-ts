@@ -47,5 +47,13 @@
   type PopArrRes = PopArr<[1, 2, 3]>;
   type PopArrRes2 = PopArr<[]>;
 
-
+  /**
+   * 提取数组类型除去第一个元素以外的类型
+   */
+  type ShiftArr<Arr extends unknown[]> = Arr extends []
+    ? []
+    : Arr extends [unknown, ...infer Rest]
+    ? Rest
+    : never;
+  type ShiftArrRes = ShiftArr<[1, 2, 3]>;
 })();
