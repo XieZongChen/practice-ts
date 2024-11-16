@@ -34,4 +34,16 @@
     ? Last
     : never;
   type GetLastRes = GetLast<[1, 2, 3]>;
+
+  /**
+   * 提取数组类型最后一个元素的类型
+   * - 如果是空数组，就直接返回，否则匹配剩余的元素，放到 infer 声明的局部变量 Rest 里，返回 Rest
+   */
+  type PopArr<Arr extends unknown[]> = Arr extends []
+    ? []
+    : Arr extends [...infer Rest, unknown]
+    ? Rest
+    : never;
+  type PopArrRes = PopArr<[1, 2, 3]>;
+  type PopArrRes2 = PopArr<[]>;
 })();
