@@ -209,7 +209,7 @@ type res = MapType<{ a: 1; b: 2 }>; // type res = { aaa: [1, 1, 1]; bbb: [2, 2, 
 
 [js 中的模式匹配](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L6)
 
-[ts 中常规模式匹配示例]()
+[ts 中常规模式匹配示例](https://github.com/XieZongChen/practice-ts/blob/133bfedbeb1d70a0c8f3039932c5375a8b73663d/src/patternMatching.ts#L12)
 
 ### 数组类型
 
