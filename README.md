@@ -207,18 +207,9 @@ type res = MapType<{ a: 1; b: 2 }>; // type res = { aaa: [1, 1, 1]; bbb: [2, 2, 
 
 **Typescript 类型的模式匹配** 是通过 extends 对类型参数做匹配，结果保存到通过 infer 声明的局部类型变量里，如果匹配就能从该局部变量里拿到提取出的类型。
 
-```typescript
-// js 中的模式匹配，`$1` 可以取到提取的子组
-'abc'.replace(/a(b)c/, '$1,$1,$1'); // 'b,b,b'
+[js 中的模式匹配](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L6)
 
-/**
- * 提取 `Promise<T>` 的 `T` 类型
- * - 通过 extends 对传入的类型参数 P 做模式匹配，其中值的类型是需要提取的
- * - 通过 infer 声明一个局部变量 Value 来保存，如果匹配，就返回匹配到的 Value，否则就返回 never 代表没匹配到
- */
-type GetValueType<P> = P extends Promise<infer Value> ? Value : never;
-type GetValueRes = GetValueType<Promise<'test'>>; // type GetValueRes = 'test'
-```
+[ts 中常规模式匹配示例]()
 
 ### 数组类型
 
