@@ -56,4 +56,5 @@
     ? Rest
     : never;
   type ShiftArrRes = ShiftArr<[1, 2, 3]>;
+  
 })();
