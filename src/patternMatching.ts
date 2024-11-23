@@ -84,4 +84,19 @@
     : Str;
   type ReplaceStrRes1 = ReplaceStr<'abc', 'a', 'b'>;
   type ReplaceStrRes2 = ReplaceStr<'abc', 'd', 'b'>;
+
+  /**
+   * 去除字符串右侧的空格
+   * - 由于一次只能去掉一个，所以需要递归
+   * - 类型参数 Str 是要 Trim 的字符串
+   * - 如果 Str 匹配字符串 + 空白字符 (空格、换行、制表符)，那就把字符串放到 infer 声明的局部变量 Rest 里
+   * - 把 Rest 作为类型参数递归 TrimStrRight，直到不匹配，这时的类型参数 Str 就是处理结果
+   */
+  type TrimStrRight<Str extends string> = Str extends `${infer Rest}${
+    | ' '
+    | '\n'
+    | '\t'}`
+    ? TrimStrRight<Rest>
+    : Str;
+  type TrimStrRightRes = TrimStrRight<'abc  '>;
 })();
