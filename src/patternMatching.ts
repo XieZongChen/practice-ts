@@ -64,5 +64,6 @@
     Str extends string,
     Prefix extends string
   > = Str extends `${Prefix}${string}` ? true : false;
-  type StartsWithRes = StartsWith<'abc', 'a'>;
+  type StartsWithRes1 = StartsWith<'abc', 'a'>;
+  type StartsWithRes2 = StartsWith<'abc', 'b'>;
 })();
