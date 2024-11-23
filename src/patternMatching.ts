@@ -59,6 +59,8 @@
 
   /**
    * 判断字符串是否以某个前缀开头
+   * - 用 Str 去匹配一个模式类型，模式类型的前缀是 Prefix，后面是任意的 string
+   * - 如果匹配返回 true，否则返回 false
    */
   type StartsWith<
     Str extends string,
@@ -66,4 +68,20 @@
   > = Str extends `${Prefix}${string}` ? true : false;
   type StartsWithRes1 = StartsWith<'abc', 'a'>;
   type StartsWithRes2 = StartsWith<'abc', 'b'>;
+
+  /**
+   * 替换指定字符串
+   * - 声明要替换的字符串 Str、待替换的字符串 From、替换成的字符串 3 个类型参数，通过 extends 约束为都是 string 类型
+   * - 用 Str 去匹配模式串，模式串由 From 和之前之后的字符串构成，把之前之后的字符串放到通过 infer 声明的局部变量 Prefix、Suffix 里
+   * - 用 Prefix、Suffix 加上替换到的字符串 To 构造成新的字符串类型返回
+   */
+  type ReplaceStr<
+    Str extends string,
+    From extends string,
+    To extends string
+  > = Str extends `${infer Prefix}${From}${infer Suffix}`
+    ? `${Prefix}${To}${Suffix}`
+    : Str;
+  type ReplaceStrRes1 = ReplaceStr<'abc', 'a', 'b'>;
+  type ReplaceStrRes2 = ReplaceStr<'abc', 'd', 'b'>;
 })();
