@@ -99,4 +99,16 @@
     ? TrimStrRight<Rest>
     : Str;
   type TrimStrRightRes = TrimStrRight<'abc  '>;
+
+  /**
+   * 去除字符串左侧的空格
+   * - 类似右侧的去除，只是匹配的顺序不同
+   */
+  type TrimStrLeft<Str extends string> = Str extends `${
+    | ' '
+    | '\n'
+    | '\t'}${infer Rest}`
+    ? TrimStrLeft<Rest>
+    : Str;
+  type TrimStrLeftRes = TrimStrLeft<'  abc'>;
 })();

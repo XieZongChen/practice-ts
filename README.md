@@ -242,3 +242,5 @@ type res = MapType<{ a: 1; b: 2 }>; // type res = { aaa: [1, 1, 1]; bbb: [2, 2, 
 #### 去掉空格
 
 [去除字符串右侧的空格](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L89)
+
+[去除字符串左侧的空格](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L104)
