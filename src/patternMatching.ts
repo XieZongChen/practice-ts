@@ -111,4 +111,11 @@
     ? TrimStrLeft<Rest>
     : Str;
   type TrimStrLeftRes = TrimStrLeft<'  abc'>;
+
+  /**
+   * 去除字符串两侧的空格
+   * - 先去除左侧的空格，再去除右侧的空格
+   */
+  type TrimStr<Str extends string> = TrimStrRight<TrimStrLeft<Str>>;
+  type TrimStrRes = TrimStr<'  abc  '>;
 })();
