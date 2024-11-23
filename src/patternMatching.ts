@@ -118,4 +118,17 @@
    */
   type TrimStr<Str extends string> = TrimStrRight<TrimStrLeft<Str>>;
   type TrimStrRes = TrimStr<'  abc  '>;
+
+  /**
+   * 提取参数的类型
+   * - 类型参数 Func 是要匹配的函数类型，通过 extends 约束为 Function
+   * - Func 和模式类型做匹配，参数类型放到用 infer 声明的局部变量 Args 里
+   * - 返回值可以是任何类型，用 unknown
+   */
+  type GetParameters<Func extends Function> = Func extends (
+    ...args: infer Args
+  ) => unknown
+    ? Args
+    : never;
+  type GetParametersRes = GetParameters<(name: string, age: number) => void>;
 })();
