@@ -175,7 +175,7 @@
   type GetThisParameterTypeRes = GetThisParameterType<Test['hello']>;
 
   /**
-   * 约束构造器实例类型
+   * 约束构造器的实例类型
    * - 使用 new(): xxx 的语法
    */
   interface Person {
@@ -184,4 +184,13 @@
   interface PersonConstructor {
     new (name: string): Person;
   }
+
+  /**
+   * 提取构造器的实例类型
+   */
+  type GetInstanceType<ConstructorType extends new (...args: any) => any> =
+    ConstructorType extends new (...args: any) => infer InstanceType
+      ? InstanceType
+      : any;
+  type GetInstanceTypeRes = GetInstanceType<PersonConstructor>;
 })();
