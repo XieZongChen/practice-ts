@@ -308,3 +308,11 @@ type res = MapType<{ a: 1; b: 2 }>; // type res = { aaa: [1, 1, 1]; bbb: [2, 2, 
 [提取索引类型值的类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L213)
 
 ## 重新构造
+
+**TypeScript 的 type、infer、类型参数声明的变量都不能修改，想对类型做各种变换产生新的类型就需要重新构造**
+
+数组、字符串、函数等类型的重新构造比较简单。而索引类型，也就是多个元素的聚合类型的重新构造复杂一些，涉及到了映射类型的语法。
+
+### 数组类型
+
+[在元组/数组的末尾添加一个元素](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/restructure.ts#L8)
