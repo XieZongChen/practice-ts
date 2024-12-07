@@ -281,6 +281,6 @@ type res = MapType<{ a: 1; b: 2 }>; // type res = { aaa: [1, 1, 1]; bbb: [2, 2, 
 
 索引类型也同样可以用模式匹配提取某个索引的值的类型，比如 React 的 index.d.ts 里的 `PropsWithRef` 的高级类型，就是通过模式匹配提取了 ref 的值的类型：
 
-图片
+![image](https://github.com/user-attachments/assets/4deca61d-83bc-4145-aaa0-df59dbd70a3a)
 
 [提取索引类型值的类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L213)
