@@ -101,6 +101,28 @@ type tuple = [string, number?];
 function func(str?: string = '1') {}
 ```
 
+### 类型的 “局部变量”
+
+TypeScript 类型系统支持 3 种可以声明任意类型的变量：`type`、`infer` 和类型参数
+
+`type` 叫做类型别名，其实就是声明一个变量存储某个类型：
+
+```typescript
+type ttt = Promise<number>;
+```
+
+`infer` 用于类型的提取，然后存到一个变量里，相当于局部变量：
+
+```typescript
+type GetValueType<P> = P extends Promise<infer Value> ? Value : never;
+```
+
+类型参数用于接受具体的类型，在类型运算中也相当于局部变量：
+
+```typescript
+type isTwo<T> = T extends 2 ? true : false;
+```
+
 ## ts 的类型运算
 
 ts 可以通过泛型 `<T>` 以及下面的运算符来进行类型的运算操作。
@@ -284,3 +306,5 @@ type res = MapType<{ a: 1; b: 2 }>; // type res = { aaa: [1, 1, 1]; bbb: [2, 2, 
 ![image](https://github.com/user-attachments/assets/4deca61d-83bc-4145-aaa0-df59dbd70a3a)
 
 [提取索引类型值的类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L213)
+
+## 重新构造
