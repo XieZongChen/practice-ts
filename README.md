@@ -205,7 +205,7 @@ type res = MapType<{ a: 1; b: 2 }>; // type res = { aaa: [1, 1, 1]; bbb: [2, 2, 
 
 ## 模式匹配
 
-**Typescript 类型的模式匹配** 是通过 extends 对类型参数做匹配，结果保存到通过 infer 声明的局部类型变量里，如果匹配就能从该局部变量里拿到提取出的类型。
+**Typescript 类型的模式匹配** 是通过 extends 对类型参数做匹配，结果保存到通过 infer 声明的局部类型变量里，之后可以从这个局部变量拿到类型做各种后续处理
 
 [js 中的模式匹配](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L6)
 
@@ -276,3 +276,11 @@ type res = MapType<{ a: 1; b: 2 }>; // type res = { aaa: [1, 1, 1]; bbb: [2, 2, 
 #### 提取构造器的参数类型
 
 [提取构造器的参数类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L200)
+
+### 索引类型
+
+索引类型也同样可以用模式匹配提取某个索引的值的类型，比如 React 的 index.d.ts 里的 `PropsWithRef` 的高级类型，就是通过模式匹配提取了 ref 的值的类型：
+
+图片
+
+[提取索引类型值的类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L213)

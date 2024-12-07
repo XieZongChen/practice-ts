@@ -208,4 +208,20 @@
     : never;
   type GetConstructorParametersRes =
     GetConstructorParameters<PersonConstructor>;
+
+  /**
+   * 提取索引类型值的类型
+   * - 类型参数 Props 为待处理的类型，通过 keyof Props 取出 Props 的所有索引构成的联合类型
+   * - 判断下 ref 是否在其中，通过 'ref' extends keyof Props
+   * - 需要判断 ref 是因为在 ts3.0 里面如果没有对应的索引，Obj[Key] 返回的是 {} 而不是 never，所以这样做下兼容处理
+   * - 如果有 ref 这个索引的话，就通过 infer 提取 Value 的类型返回，否则返回 never
+   */
+  type GetRefProps<Props> = 'ref' extends keyof Props
+    ? Props extends { ref?: infer Value | undefined }
+      ? Value
+      : never
+    : never;
+  type GetRefPropsRes1 = GetRefProps<{ ref?: 1; name: 'test' }>;
+  type GetRefPropsRes2 = GetRefProps<{ ref?: undefined; name: 'test' }>;
+  type GetRefPropsRes3 = GetRefProps<{ name: 'test' }>;
 })();
