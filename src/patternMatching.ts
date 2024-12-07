@@ -173,4 +173,15 @@
     ? ThisType
     : unknown;
   type GetThisParameterTypeRes = GetThisParameterType<Test['hello']>;
+
+  /**
+   * 约束构造器实例类型
+   * - 使用 new(): xxx 的语法
+   */
+  interface Person {
+    name: string;
+  }
+  interface PersonConstructor {
+    new (name: string): Person;
+  }
 })();
