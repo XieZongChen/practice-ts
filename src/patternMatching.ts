@@ -161,6 +161,10 @@
 
   /**
    * 提取 this 参数的类型
+   * - 类型参数 T 是待处理的类型，通过 extends 约束为函数类型
+   * - 提取函数 this 的类型到 infer 声明的局部变量 ThisType 中
+   * - 函数其余的参数是任意类型，也就是 any
+   * - 函数返回值也是任意类型，也就是 any
    */
   type GetThisParameterType<T> = T extends (
     this: infer ThisType,
