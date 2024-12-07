@@ -143,4 +143,30 @@
     ? ReturnType
     : never;
   type GetReturnTypeRes = GetReturnType<() => string>;
+
+  /**
+   * 声明类的方法时，约束其 this 类型
+   */
+  class Test {
+    name: string;
+
+    constructor() {
+      this.name = 'Test';
+    }
+
+    hello(this: Test) {
+      return "hello, I'm " + this.name;
+    }
+  }
+
+  /**
+   * 提取 this 参数的类型
+   */
+  type GetThisParameterType<T> = T extends (
+    this: infer ThisType,
+    ...args: any[]
+  ) => any
+    ? ThisType
+    : unknown;
+  type GetThisParameterTypeRes = GetThisParameterType<Test['hello']>;
 })();

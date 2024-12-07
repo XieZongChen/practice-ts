@@ -256,3 +256,9 @@ type res = MapType<{ a: 1; b: 2 }>; // type res = { aaa: [1, 1, 1]; bbb: [2, 2, 
 #### 提取返回值的类型
 
 [提取返回值的类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L136)
+
+#### 提取 this 参数的类型
+
+[声明类的方法时，约束其 this 类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L148)
+
+[提取 this 参数的类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L163)
