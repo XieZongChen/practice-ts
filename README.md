@@ -235,33 +235,19 @@ type res = MapType<{ a: 1; b: 2 }>; // type res = { aaa: [1, 1, 1]; bbb: [2, 2, 
 
 ### 数组类型
 
-#### 匹配第一个元素
+[匹配数组类型第一个元素类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L20)
 
-[匹配数组类型第一个元素类型示例](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L20)
-
-#### 匹配最后一个元素
-
-[匹配数组类型最后一个元素类型示例](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L31)
-
-#### 匹配数组类型除去最后一个元素以外的类型
+[匹配数组类型最后一个元素类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L31)
 
 [提取数组类型除去最后一个元素以外的类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L39)
-
-#### 匹配数组类型除去第一个元素以外的类型
 
 [提取数组类型除去第一个元素以外的类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L51)
 
 ### 字符串类型
 
-#### 判断字符串是否以某个前缀开头
-
 [判断字符串是否以某个前缀开头](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L61)
 
-#### 替换指定字符串
-
 [判断字符串是否以某个前缀开头](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L73)
-
-#### 去掉空格
 
 [去除字符串右侧的空格](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L89)
 
@@ -271,15 +257,9 @@ type res = MapType<{ a: 1; b: 2 }>; // type res = { aaa: [1, 1, 1]; bbb: [2, 2, 
 
 ### 函数
 
-#### 提取参数的类型
-
 [提取参数的类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L123)
 
-#### 提取返回值的类型
-
 [提取返回值的类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L136)
-
-#### 提取 this 参数的类型
 
 [声明类的方法时，约束其 this 类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L148)
 
@@ -289,13 +269,9 @@ type res = MapType<{ a: 1; b: 2 }>; // type res = { aaa: [1, 1, 1]; bbb: [2, 2, 
 
 构造器和函数的区别是，构造器是用于创建对象的，所以可以被 new。
 
-#### 约束构造器的实例类型
-
 [约束构造器的实例类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L178)
 
 [提取构造器的实例类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L189)
-
-#### 提取构造器的参数类型
 
 [提取构造器的参数类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/patternMatching.ts#L200)
 
