@@ -187,10 +187,25 @@
 
   /**
    * 提取构造器的实例类型
+   * - 类型参数 ConstructorType 是待处理的构造器类型，通过 extends 约束为构造器类型
+   * - 提取构造器的实例类型到 infer 声明的局部变量 InstanceType 中并返回
    */
   type GetInstanceType<ConstructorType extends new (...args: any) => any> =
     ConstructorType extends new (...args: any) => infer InstanceType
       ? InstanceType
       : any;
   type GetInstanceTypeRes = GetInstanceType<PersonConstructor>;
+
+  /**
+   * 提取构造器的参数类型
+   * - 类型参数 ConstructorType 是待处理的构造器类型，通过 extends 约束为构造器类型
+   * - 提取构造器的参数类型到 infer 声明的局部变量 ParametersType 中并返回
+   */
+  type GetConstructorParameters<
+    ConstructorType extends new (...args: any) => any
+  > = ConstructorType extends new (...args: infer ParametersType) => any
+    ? ParametersType
+    : never;
+  type GetConstructorParametersRes =
+    GetConstructorParameters<PersonConstructor>;
 })();
