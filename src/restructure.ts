@@ -46,4 +46,16 @@
       ? `${Uppercase<First>}${Rest}`
       : Str;
   type CapitalizeStrRes = CapitalizeStr<'hello'>;
+
+  /**
+   * 将蛇形表示法（Snake Case）转换为驼峰表示法（Camel Case）
+   * - 参数 Str 是待处理的字符串类型，约束为 string
+   * - 提取 _ 之前和之后的两个字符到 infer 声明的局部变量 Left 和 Right，剩下的字符放到 Rest 里
+   * - 把右边的字符 Right 大写，和 Left 构造成新的字符串，剩余的字符 Rest 要继续递归的处理
+   */
+  type CamelCase<Str extends string> =
+    Str extends `${infer Left}_${infer Right}${infer Rest}`
+      ? `${Left}${Uppercase<Right>}${CamelCase<Rest>}`
+      : Str;
+  type CamelCaseRes = CamelCase<'test_test_test'>;
 })();
