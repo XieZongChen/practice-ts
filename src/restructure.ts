@@ -73,4 +73,17 @@
     ? DropSubStr<`${Prefix}${Suffix}`, SubStr>
     : Str;
   type DropSubStrRes = DropSubStr<'!hello!!!!', '!'>;
+
+  /**
+   * 为函数类型添加一个指定类型参数
+   * - 类型参数 Func 是待处理的函数类型，通过 extends 约束为 Function，Arg 是要添加的参数类型
+   * - 通过模式匹配提取参数到 infer 声明的局部变量 Args 中，提取返回值到局部变量 ReturnType 中
+   * - 用 Args 数组添加 Arg 构造成新的参数类型，结合 ReturnType 构造成新的函数类型返回
+   */
+  type AppendArgument<Func extends Function, Arg> = Func extends (
+    ...args: infer Args
+  ) => infer ReturnType
+    ? (...args: [...Args, Arg]) => ReturnType
+    : never;
+  type AppendArgumentRes = AppendArgument<(first: string) => boolean, number>;
 })();
