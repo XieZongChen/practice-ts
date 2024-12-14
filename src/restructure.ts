@@ -58,4 +58,19 @@
       ? `${Left}${Uppercase<Right>}${CamelCase<Rest>}`
       : Str;
   type CamelCaseRes = CamelCase<'test_test_test'>;
+
+  /**
+   * 删除字符串中的指定子串
+   * - 类型参数 Str 是待处理的字符串， SubStr 是要删除的字符串，都通过 extends 约束为 string 类型
+   * - 通过模式匹配提取 SubStr 之前和之后的字符串到 infer 声明的局部变量 Prefix、Suffix 中
+   * - 如果不匹配就直接返回 Str；如果匹配，那就用 Prefix、Suffix 构造成新的字符串，然后继续递归删除 SubStr
+   * - 直到不再匹配，也就是没有 SubStr 了
+   */
+  type DropSubStr<
+    Str extends string,
+    SubStr extends string
+  > = Str extends `${infer Prefix}${SubStr}${infer Suffix}`
+    ? DropSubStr<`${Prefix}${Suffix}`, SubStr>
+    : Str;
+  type DropSubStrRes = DropSubStr<'!hello!!!!', '!'>;
 })();
