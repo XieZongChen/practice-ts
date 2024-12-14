@@ -12,4 +12,10 @@
    */
   type Push<Arr extends unknown[], Ele> = [...Arr, Ele];
   type PushRes = Push<tuple, 4>;
+
+  /**
+   * 在元组/数组的开头添加一个元素
+   */
+  type Unshift<Arr extends unknown[], Ele> = [Ele, ...Arr];
+  type UnshiftRes = Unshift<[1, 2, 3], 0>;
 })();
