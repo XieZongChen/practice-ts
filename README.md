@@ -296,3 +296,7 @@ type res = MapType<{ a: 1; b: 2 }>; // type res = { aaa: [1, 1, 1]; bbb: [2, 2, 
 [在元组/数组的开头添加一个元素](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/restructure.ts#L17)
 
 [按项分组合并两个数组/元组](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/restructure.ts#L23)
+
+### 字符串类型
+
+[将字符串的首字母转换为大写](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/restructure.ts#L39)

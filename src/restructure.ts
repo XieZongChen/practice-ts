@@ -34,4 +34,16 @@
       : []
     : [];
   type ZipRes = Zip<[1, 2, 3, 4], ['1', '2', '3', '4']>;
+
+  /**
+   * 将字符串的首字母转换为大写
+   * - 类型参数 Str 是要处理的字符串类型，通过 extends 约束为 string
+   * - 通过 infer 提取出首个字符到局部变量 First，提取后面的字符到局部变量 Rest
+   * - 使用 TypeScript 提供的内置高级类型 Uppercase 把首字母转为大写，加上 Rest，构造成新的字符串类型返回
+   */
+  type CapitalizeStr<Str extends string> =
+    Str extends `${infer First}${infer Rest}`
+      ? `${Uppercase<First>}${Rest}`
+      : Str;
+  type CapitalizeStrRes = CapitalizeStr<'hello'>;
 })();
