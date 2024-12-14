@@ -18,4 +18,20 @@
    */
   type Unshift<Arr extends unknown[], Ele> = [Ele, ...Arr];
   type UnshiftRes = Unshift<[1, 2, 3], 0>;
+
+  /**
+   * 按项分组合并两个数组/元组
+   * - 类型参数 One、Other 声明为 unknown[]，也就是元素个数任意，类型任意的数组
+   * - 每次提取 One 和 Other 的第一个元素 OneFirst、OtherFirst，剩余的放到 OneRest、OtherRest 里
+   * - 用 OneFirst、OtherFirst 构造成新的元组的一个元素，剩余元素继续递归处理 OneRest、OtherRest
+   */
+  type Zip<One extends unknown[], Other extends unknown[]> = One extends [
+    infer OneFirst,
+    ...infer OneRest
+  ]
+    ? Other extends [infer OtherFirst, ...infer OtherRest]
+      ? [[OneFirst, OtherFirst], ...Zip<OneRest, OtherRest>] // 这里用了递归的思想
+      : []
+    : [];
+  type ZipRes = Zip<[1, 2, 3, 4], ['1', '2', '3', '4']>;
 })();
