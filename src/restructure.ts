@@ -148,4 +148,13 @@
     readonly key: 'value';
     readonly key2: 'value2';
   }>;
+
+  /**
+   * 把索引类型的值映射为必选类型
+   * - 索引类型的索引可以添加 -? 的修饰符，代表去掉可选
+   */
+  type ToRequired<T> = {
+    [Key in keyof T]-?: T[Key];
+  };
+  type ToRequiredRes = ToRequired<{ key?: 'value'; key2?: 'value2' }>;
 })();
