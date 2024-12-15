@@ -97,4 +97,16 @@
     [Key in keyof Obj]: [Obj[Key], Obj[Key], Obj[Key]];
   };
   type MappingRes = Mapping<{ key: 'value'; key2: 'value2' }>;
+
+  /**
+   * 把索引类型的 Key 变为大写
+   * - 类型参数 Obj 是待处理的索引类型，通过 extends 约束为 object
+   * - 新的索引类型的索引为 Obj 中的索引，也就是 Key in keyof Obj，但要做一些变换，也就是 as 之后的
+   * - 通过 Uppercase 把索引 Key 转为大写，因为索引可能为 string、number、symbol 类型，而这里只能接受 string 类型，所以要 & string，也就是取索引中 string 的部分
+   * - value 保持不变，也就是之前的索引 Key 对应的值的类型 Obj[Key]
+   */
+  type UppercaseKey<Obj extends object> = {
+    [Key in keyof Obj as Uppercase<Key & string>]: Obj[Key];
+  };
+  type UppercaseKeyRes = UppercaseKey<{ key: 'value'; key2: 'value2' }>;
 })();
