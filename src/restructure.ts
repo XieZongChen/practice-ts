@@ -127,4 +127,13 @@
     readonly [Key in keyof T]: T[Key];
   };
   type ToReadonlyRes = ToReadonly<{ key: 'value'; key2: 'value2' }>;
+
+  /**
+   * 把索引类型的值映射为可选类型
+   * - 索引类型的索引可以添加 ? 的修饰符，代表可选
+   */
+  type ToPartial<T> = {
+    [Key in keyof T]?: T[Key];
+  };
+  type ToPartialRes = ToPartial<{ key: 'value'; key2: 'value2' }>;
 })();
