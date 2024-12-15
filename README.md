@@ -308,3 +308,7 @@ type res = MapType<{ a: 1; b: 2 }>; // type res = { aaa: [1, 1, 1]; bbb: [2, 2, 
 ### 函数类型
 
 [为函数类型添加一个指定类型参数](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/restructure.ts#L78)
+
+### 索引类型
+
+[映射一个索引类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/restructure.ts#L91)

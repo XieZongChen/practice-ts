@@ -86,4 +86,15 @@
     ? (...args: [...Args, Arg]) => ReturnType
     : never;
   type AppendArgumentRes = AppendArgument<(first: string) => boolean, number>;
+
+  /**
+   * 映射一个索引类型
+   * - 类型参数 Obj 是待处理的索引类型，通过 extends 约束为 object
+   * - 用 keyof 取出 Obj 的索引，作为新的索引类型的索引，也就是 Key in keyof Obj
+   * - 值的类型可以做变换，这里用之前索引类型的值 Obj[Key] 构造成了三个元素的元组类型 [Obj[Key], Obj[Key], Obj[Key]]
+   */
+  type Mapping<Obj extends object> = {
+    [Key in keyof Obj]: [Obj[Key], Obj[Key], Obj[Key]];
+  };
+  type MappingRes = Mapping<{ key: 'value'; key2: 'value2' }>;
 })();
