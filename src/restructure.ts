@@ -109,4 +109,13 @@
     [Key in keyof Obj as Uppercase<Key & string>]: Obj[Key];
   };
   type UppercaseKeyRes = UppercaseKey<{ key: 'value'; key2: 'value2' }>;
+
+  /**
+   * 使用 Record 改写把索引类型的 Key 变为大写
+   * - TypeScript 提供了内置的高级类型 Record 来创建索引类型
+   */
+  type UppercaseKey2<Obj extends Record<string, any>> = {
+    [Key in keyof Obj as Uppercase<Key & string>]: Obj[Key];
+  };
+  type UppercaseKeyRes2 = UppercaseKey2<{ key: 'value'; key2: 'value2' }>;
 })();
