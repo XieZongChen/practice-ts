@@ -118,4 +118,13 @@
     [Key in keyof Obj as Uppercase<Key & string>]: Obj[Key];
   };
   type UppercaseKeyRes2 = UppercaseKey2<{ key: 'value'; key2: 'value2' }>;
+
+  /**
+   * 把索引类型的值映射为只读类型
+   * - 索引类型的索引可以添加 readonly 的修饰符，代表只读
+   */
+  type ToReadonly<T> = {
+    readonly [Key in keyof T]: T[Key];
+  };
+  type ToReadonlyRes = ToReadonly<{ key: 'value'; key2: 'value2' }>;
 })();
