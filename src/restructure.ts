@@ -136,4 +136,16 @@
     [Key in keyof T]?: T[Key];
   };
   type ToPartialRes = ToPartial<{ key: 'value'; key2: 'value2' }>;
+
+  /**
+   * 把索引类型的值映射为可变类型
+   * - 索引类型的索引可以添加 -readonly 的修饰符，代表去掉只读
+   */
+  type ToMutable<T> = {
+    -readonly [Key in keyof T]: T[Key];
+  };
+  type ToMutableRes = ToMutable<{
+    readonly key: 'value';
+    readonly key2: 'value2';
+  }>;
 })();
