@@ -157,4 +157,20 @@
     [Key in keyof T]-?: T[Key];
   };
   type ToRequiredRes = ToRequired<{ key?: 'value'; key2?: 'value2' }>;
+
+  /**
+   * 根据类型做过滤并构造新的索引类型
+   * - 类型参数 Obj 为要处理的索引类型，通过 extends 约束为索引为 string，值为任意类型的索引类型 Record<string, any>
+   * - 类型参数 ValueType 为要过滤出的值的类型
+   * - 构造新的索引类型，索引为 Obj 的索引，也就是 Key in keyof Obj，但要做一些变换，也就是 as 之后的部分
+   * - 如果原来索引的值 Obj[Key] 是 ValueType 类型，索引依然为之前的索引 Key，否则索引设置为 never，never 的索引会在生成新的索引类型时被去掉
+   * - 值保持不变，依然为原来索引的值，也就是 Obj[Key]
+   */
+  type FilterByValueType<Obj extends Record<string, any>, ValueType> = {
+    [Key in keyof Obj as Obj[Key] extends ValueType ? Key : never]: Obj[Key];
+  };
+  type FilterByValueTypeRes = FilterByValueType<
+    { key: 'value'; key2: 2; key3: ['string']; key4: string },
+    string | number
+  >;
 })();
