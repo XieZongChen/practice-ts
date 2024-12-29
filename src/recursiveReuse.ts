@@ -70,4 +70,21 @@
   type IncludesRes1 = Includes<[1, 2, 3], 2>;
   type IncludesRes2 = Includes<[1, 2, 3], 4>;
 
+  /**
+   * 移除数组中的指定元素并构造一个新的数组返回
+   * - 类型参数 Arr 是待处理的数组，元素类型任意，也就是 unknown[]。类型参数 Item 为待查找的元素类型。类型参数 Result 是构造出的新数组，默认值是 []
+   * - 通过模式匹配提取数组中的一个元素的类型，如果是 Item 类型的话就删除，也就是不放入构造的新数组，直接返回之前的 Result
+   * - 否则放入构造的新数组，也就是再构造一个新的数组 [...Result, First]
+   * - 直到模式匹配不再满足，也就是处理完了所有的元素，返回这时候的 Result
+   */
+  type RemoveItem<
+    Arr extends unknown[],
+    Item,
+    Result extends unknown[] = []
+  > = Arr extends [infer First, ...infer Rest]
+    ? IsEqual<First, Item> extends true
+      ? RemoveItem<Rest, Item, Result>
+      : RemoveItem<Rest, Item, [...Result, First]>
+    : Result;
+  type RemoveItemRes = RemoveItem<[1, 2, 3, 4, 3], 3, [5]>;
 })();
