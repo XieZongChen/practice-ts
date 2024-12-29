@@ -63,5 +63,6 @@
     : false;
   type IsEqual<A, B> = (A extends B ? true : false) &
     (B extends A ? true : false);
-  type IncludesRes = Includes<[1, 2, 3], 2>;
+  type IncludesRes1 = Includes<[1, 2, 3], 2>;
+  type IncludesRes2 = Includes<[1, 2, 3], 4>;
 })();
