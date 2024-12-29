@@ -29,4 +29,18 @@
   type DeepPromiseValueTypeRes2 = DeepPromiseValueType2<
     Promise<Promise<Promise<string>>>
   >;
+
+  /**
+   * 反转数组
+   * - 类型参数 Arr 为待处理的数组类型，元素类型不确定，也就是 unknown
+   * - 每次只处理一个元素的提取，放到 infer 声明的局部变量 First 里，剩下的放到 Rest 里
+   * - 用 First 作为最后一个元素构造新数组，其余元素递归的取
+   * - 结束条件就是取完所有的元素，也就是不再满足模式匹配的条件，这时候就返回 Arr
+   */
+  type ReverseArr<Arr extends unknown[]> = Arr extends [
+    infer First,
+    ...infer Rest
+  ]
+    ? [...ReverseArr<Rest>, First]
+    : Arr;
 })();
