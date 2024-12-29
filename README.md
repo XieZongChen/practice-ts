@@ -343,4 +343,4 @@ TypeScript 类型系统不支持循环，但支持递归。当处理数量（个
 
 [反转数组](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/recursiveReuse.ts#L34)
 
-[查找数组中是否有指定元素](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/recursiveReuse.ts#L49)
+[查找数组中是否有指定元素](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/recursiveReuse.ts#L56)

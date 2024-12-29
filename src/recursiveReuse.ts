@@ -46,12 +46,18 @@
   type ReverseArrRes = ReverseArr<[1, 2, 3]>;
 
   /**
+   * 判断两个类型是否相等
+   * - 如果两个类型互为子类型，则说明它们是相等的
+   */
+  type IsEqual<A, B> = (A extends B ? true : false) &
+    (B extends A ? true : false);
+
+  /**
    * 查找数组中是否有指定元素
    * - 类型参数 Arr 是待查找的数组类型，元素类型任意，也就是 unknown。FindItem 是待查找的元素类型
    * - 每次提取一个元素到 infer 声明的局部变量 First 中，剩余的放到局部变量 Rest
    * - 判断 First 是否是要查找的元素，也就是和 FindItem 相等，是的话就返回 true，否则继续递归判断下一个元素
    * - 直到结束条件也就是提取不出下一个元素，这时返回 false
-   * - 相等的判断就是 A 是 B 的子类型并且 B 也是 A 的子类型
    */
   type Includes<Arr extends unknown[], FindItem> = Arr extends [
     infer First,
@@ -61,8 +67,7 @@
       ? true
       : Includes<Rest, FindItem>
     : false;
-  type IsEqual<A, B> = (A extends B ? true : false) &
-    (B extends A ? true : false);
   type IncludesRes1 = Includes<[1, 2, 3], 2>;
   type IncludesRes2 = Includes<[1, 2, 3], 4>;
+
 })();
