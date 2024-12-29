@@ -9,14 +9,24 @@
    * - 判断如果 ValueType 依然是 Promise类型，就递归处理
    * - 结束条件就是 ValueType 不为 Promise 类型，那就处理完了所有的层数，返回这时的 ValueType
    */
-  type DeepPromiseValueType<P extends Promise<unknown>> = P extends Promise<
+  type DeepPromiseValueType1<P extends Promise<unknown>> = P extends Promise<
     infer ValueType
   >
     ? ValueType extends Promise<unknown>
-      ? DeepPromiseValueType<ValueType>
+      ? DeepPromiseValueType1<ValueType>
       : ValueType
     : never;
-  type DeepPromiseValueTypeRes = DeepPromiseValueType<
+  type DeepPromiseValueTypeRes1 = DeepPromiseValueType1<
+    Promise<Promise<Promise<string>>>
+  >;
+
+  /**
+   * 提取不确定层数的 Promise 中的 value 类型第二种方式
+   */
+  type DeepPromiseValueType2<T> = T extends Promise<infer ValueType>
+    ? DeepPromiseValueType2<ValueType>
+    : T;
+  type DeepPromiseValueTypeRes2 = DeepPromiseValueType2<
     Promise<Promise<Promise<string>>>
   >;
 })();

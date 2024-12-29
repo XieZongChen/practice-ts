@@ -336,3 +336,5 @@ TypeScript 类型系统不支持循环，但支持递归。当处理数量（个
 ### Promise 的递归复用
 
 [提取不确定层数的 Promise 中的 value 类型第一种方式](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/recursiveReuse.ts#L6)
+
+[提取不确定层数的 Promise 中的 value 类型第二种方式](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/recursiveReuse.ts#L24)
