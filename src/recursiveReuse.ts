@@ -129,4 +129,18 @@
       ? First | StringToUnion<Rest>
       : never;
   type StringToUnionRes = StringToUnion<'test'>;
+
+  /**
+   * 字符串反转
+   * - 类型参数 Str 为待处理的字符串。类型参数 Result 为构造出的字符，默认值是空串
+   * - 通过模式匹配提取第一个字符到 infer 声明的局部变量 First，其余字符放到 Rest
+   * - 用 First 和之前的 Result 构造成新的字符串，把 First 放到前面，因为递归是从左到右处理，那么不断往前插就是把右边的放到了左边，完成了反转的效果
+   */
+  type ReverseStr<
+    Str extends string,
+    Result extends string = ''
+  > = Str extends `${infer First}${infer Rest}`
+    ? ReverseStr<Rest, `${First}${Result}`>
+    : Result;
+  type ReverseStrRes = ReverseStr<'test'>;
 })();
