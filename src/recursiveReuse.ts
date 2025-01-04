@@ -117,4 +117,16 @@
     ? `${Left}${To}${ReplaceAll<Right, From, To>}`
     : Str;
   type ReplaceAllRes = ReplaceAll<'test test', 'test', 'some'>;
+
+  /**
+   * 将字符串字面量类型的每个字符都提取出来组成联合类型
+   * - 类型参数 Str 为待处理的字符串类型，通过 extends 约束为 string
+   * - 通过模式匹配提取第一个字符到 infer 声明的局部变量 First，其余的字符放到局部变量 Rest
+   * - 用 First 构造联合类型，剩余的元素递归的取
+   */
+  type StringToUnion<Str extends string> =
+    Str extends `${infer First}${infer Rest}`
+      ? First | StringToUnion<Rest>
+      : never;
+  type StringToUnionRes = StringToUnion<'test'>;
 })();
