@@ -339,7 +339,7 @@ TypeScript 类型系统不支持循环，但支持递归。当处理数量（个
 
 [提取不确定层数的 Promise 中的 value 类型第二种方式](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/recursiveReuse.ts#L24)
 
-## 数组类型
+### 数组类型
 
 [反转数组](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/recursiveReuse.ts#L34)
 
@@ -349,7 +349,7 @@ TypeScript 类型系统不支持循环，但支持递归。当处理数量（个
 
 [构造一个指定长度和类型的数组](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/recursiveReuse.ts#L92)
 
-## 字符串类型
+### 字符串类型
 
 [替换字符串中的所有指定子串](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/recursiveReuse.ts#L106)
 
@@ -357,6 +357,6 @@ TypeScript 类型系统不支持循环，但支持递归。当处理数量（个
 
 [字符串反转](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/recursiveReuse.ts#L134)
 
-## 对象类型
+### 对象类型
 
 [递归给传入 obj 的所有属性加上 Readonly](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/recursiveReuse.ts#L148)
