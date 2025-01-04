@@ -143,4 +143,37 @@
     ? ReverseStr<Rest, `${First}${Result}`>
     : Result;
   type ReverseStrRes = ReverseStr<'test'>;
+
+  /**
+   * 递归给传入 obj 的所有属性加上 Readonly
+   * - 类型参数 Obj 是待处理的索引类型，约束为 Record<string, any>，也就是索引为 string，值为任意类型的索引类型
+   * - 索引映射自之前的索引，也就是 Key in keyof Obj，只不过加上了 readonly 的修饰
+   * - 值要做下判断，如果是 object 类型并且还是 Function，那么就直接取之前的值 Obj[Key]
+   * - 如果是 object 类型但不是 Function，那就是说也是一个索引类型，就递归处理 DeepReadonly<Obj[Key]>
+   * - 否则，值不是 object 就直接返回之前的值 Obj[Key]
+   * - 因为 ts 的类型只有被用到的时候才会做计算，所以在最外卖加上一段 Obj extends never ? never 或者 Obj extends any 等，触发计算
+   */
+  type DeepReadonly<Obj extends Record<string, any>> = Obj extends any
+    ? {
+        readonly [Key in keyof Obj]: Obj[Key] extends object
+          ? Obj[Key] extends Function
+            ? Obj[Key]
+            : DeepReadonly<Obj[Key]>
+          : Obj[Key];
+      }
+    : never;
+  type DeepReadonlyRes = DeepReadonly<{
+    a: {
+      b: {
+        c: {
+          f: () => 'test';
+          d: {
+            e: {
+              test: string;
+            };
+          };
+        };
+      };
+    };
+  }>;
 })();

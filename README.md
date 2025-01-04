@@ -356,3 +356,7 @@ TypeScript 类型系统不支持循环，但支持递归。当处理数量（个
 [将字符串字面量类型的每个字符都提取出来组成联合类型](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/recursiveReuse.ts#L122)
 
 [字符串反转](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/recursiveReuse.ts#L134)
+
+## 对象类型
+
+[递归给传入 obj 的所有属性加上 Readonly](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/recursiveReuse.ts#L148)
