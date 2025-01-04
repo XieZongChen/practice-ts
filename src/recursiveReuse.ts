@@ -101,5 +101,20 @@
     ? Arr
     : BuildArray<Length, Ele, [...Arr, Ele]>;
   type BuildArrayRes = BuildArray<6, string, [1]>;
-  
+
+  /**
+   * 替换字符串中的所有指定子串
+   * - 类型参数 Str 是待处理的字符串类型，From 是待替换的字符，To 是替换到的字符
+   * - 通过模式匹配提取 From 左右的字符串到 infer 声明的局部变量 Left 和 Right 里
+   * - 用 Left 和 To 构造新的字符串，剩余的 Right 部分继续递归的替换
+   * - 结束条件是不再满足模式匹配，也就是没有要替换的元素，这时就直接返回字符串 Str
+   */
+  type ReplaceAll<
+    Str extends string,
+    From extends string,
+    To extends string
+  > = Str extends `${infer Left}${From}${infer Right}`
+    ? `${Left}${To}${ReplaceAll<Right, From, To>}`
+    : Str;
+  type ReplaceAllRes = ReplaceAll<'test test', 'test', 'some'>;
 })();
