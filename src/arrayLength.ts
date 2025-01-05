@@ -27,4 +27,18 @@
     ...BuildArray<Num2>
   ]['length'];
   type AddRes = Add<3, 4>;
+
+  /**
+   * 实现减法
+   * - 类型参数 Num1、Num2 分别是被减数和减数，通过 extends 约束为 number
+   * - 构造 Num1 长度的数组，通过模式匹配提取出 Num2 长度个元素，剩下的放到 infer 声明的局部变量 Rest 里
+   * - 取 Rest 的长度返回，就是减法的结果
+   */
+  type Subtract<
+    Num1 extends number,
+    Num2 extends number
+  > = BuildArray<Num1> extends [...arr1: BuildArray<Num2>, ...arr2: infer Rest]
+    ? Rest['length']
+    : never;
+  type SubtractRes = Subtract<11, 7>;
 })();
