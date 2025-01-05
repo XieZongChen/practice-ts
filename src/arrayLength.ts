@@ -15,4 +15,16 @@
     ? Arr
     : BuildArray<Length, Ele, [...Arr, Ele]>;
   type BuildArrayRes = BuildArray<6, string>;
+
+  /**
+   * 实现加法
+   * - 类型参数 Num1 和 Num2 是要相加的两个数
+   * - 使用 BuildArray 构造出要相加数量长度的数组，将其合并到一个数组里
+   * - 这个数组的长度即为两数相加的结果
+   */
+  type Add<Num1 extends number, Num2 extends number> = [
+    ...BuildArray<Num1>,
+    ...BuildArray<Num2>
+  ]['length'];
+  type AddRes = Add<3, 4>;
 })();
