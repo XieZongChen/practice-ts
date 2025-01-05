@@ -63,4 +63,20 @@
         [...BuildArray<Num1>, ...ResultArr]
       >;
   type MultiplicationRes = Multiplication<3, 4>;
+
+  /**
+   * 实现除法
+   * - 类型参数 Num1 和 Num2 分别是被减数和减数
+   * - 类型参数 CountArr 是用来记录减了几次的累加数组
+   * - 如果 Num1 减到了 0 ，那么这时候减了几次就是除法结果，也就是 CountArr['length']
+   * - 否则继续递归的减，让 Num1 减去 Num2，并且 CountArr 多加一个元素代表又减了一次
+   */
+  type Divide<
+    Num1 extends number,
+    Num2 extends number,
+    CountArr extends unknown[] = []
+  > = Num1 extends 0
+    ? CountArr['length']
+    : Divide<Subtract<Num1, Num2>, Num2, [unknown, ...CountArr]>;
+  type DivideRes = Divide<12, 4>;
 })();
