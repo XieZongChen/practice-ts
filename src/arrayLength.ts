@@ -116,4 +116,32 @@
     : GreaterThan<Num1, Num2, [...CountArr, unknown]>;
   type GreaterThanRes1 = GreaterThan<5, 6>;
   type GreaterThanRes2 = GreaterThan<6, 5>;
+
+  /**
+   * 构造指定长度的 Fibonacci 数列，并返回指定位置（Num）的数
+   * - 类型参数 PrevArr 是代表之前的累加值的数组。类型参数 CurrentArr 是代表当前数值的数组
+   * - 类型参数 IndexArr 用于记录 index，每次递归加一，默认值是 []，代表从 0 开始
+   * - 类型参数 Num 代表求数列的第几个数
+   * - 判断当前 index 也就是 IndexArr['length'] 是否到了 Num，到了就返回当前的数值 CurrentArr['length']
+   * - 否则求出当前 index 对应的数值，用之前的数加上当前的数 [...PrevArr, ... CurrentArr]
+   * - 然后继续递归，index + 1，也就是 [...IndexArr, unknown]
+   */
+  type FibonacciLoop<
+    PrevArr extends unknown[],
+    CurrentArr extends unknown[],
+    IndexArr extends unknown[] = [],
+    Num extends number = 1
+  > = IndexArr['length'] extends Num
+    ? CurrentArr['length']
+    : FibonacciLoop<
+        CurrentArr,
+        [...PrevArr, ...CurrentArr],
+        [...IndexArr, unknown],
+        Num
+      >;
+  /**
+   * 需要初始化一下才能触发 TS 的计算
+   */
+  type Fibonacci<Num extends number> = FibonacciLoop<[1], [], [], Num>;
+  type FibonacciRes = Fibonacci<8>;
 })();

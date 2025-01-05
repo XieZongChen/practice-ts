@@ -382,3 +382,5 @@ TypeScript 类型系统中没有加减乘除运算符，但是可以通过构造
 [字符串计数](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/arrayLength.ts#L84)
 
 [比较第一个数是否比第二个大](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/arrayLength.ts#L98)
+
+[构造指定长度的 Fibonacci 数列，并返回指定位置（Num）的数](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/arrayLength.ts#L121)
