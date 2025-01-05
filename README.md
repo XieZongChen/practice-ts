@@ -362,3 +362,6 @@ TypeScript 类型系统不支持循环，但支持递归。当处理数量（个
 [递归给传入 obj 的所有属性加上 Readonly](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/recursiveReuse.ts#L148)
 
 ## 数组长度计数
+
+TypeScript 类型系统中没有加减乘除运算符，但是可以通过构造不同的数组然后取 length 的方式来完成数值计算，把数值的加减乘除转化为对数组的提取和构造
+
