@@ -79,4 +79,18 @@
     ? CountArr['length']
     : Divide<Subtract<Num1, Num2>, Num2, [unknown, ...CountArr]>;
   type DivideRes = Divide<12, 4>;
+
+  /**
+   * 字符串计数
+   * - 类型参数 Str 是待处理的字符串。类型参数 CountArr 是做计数的数组，默认值 [] 代表从 0 开始
+   * - 每次通过模式匹配提取去掉一个字符之后的剩余字符串，并且往计数数组里多放入一个元素。递归进行取字符和计数
+   * - 如果模式匹配不满足，代表计数结束，返回计数数组的长度 CountArr['length']
+   */
+  type StrLen<
+    Str extends string,
+    CountArr extends unknown[] = []
+  > = Str extends `${string}${infer Rest}`
+    ? StrLen<Rest, [...CountArr, unknown]>
+    : CountArr['length'];
+  type StrLenRes = StrLen<'test'>;
 })();
