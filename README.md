@@ -372,3 +372,5 @@ TypeScript 类型系统中没有加减乘除运算符，但是可以通过构造
 [实现加法](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/arrayLength.ts#L20)
 
 [实现减法](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/arrayLength.ts#L32)
+
+[实现乘法](https://github.com/XieZongChen/practice-ts/blob/a2a0d5c2cb1a9ccc1263924d09a6cc99a32265a0/src/arrayLength.ts#L46)

@@ -41,4 +41,26 @@
     ? Rest['length']
     : never;
   type SubtractRes = Subtract<11, 7>;
+
+  /**
+   * 实现乘法
+   * - 类型参数 Num1 和 Num2 分别是被乘数和乘数
+   * - 因为乘法是多个加法结果的累加，我们加了一个类型参数 ResultArr 来保存中间结果，默认值是 []，相当于从 0 开始加
+   * - 每加一次就把 Num2 减一，直到 Num2 为 0，就代表加完了
+   * - 加的过程就是往 ResultArr 数组中放 Num1 个元素
+   * - 这样递归的进行累加，也就是递归的往 ResultArr 中放元素
+   * - 最后取 ResultArr 的 length 就是乘法的结果
+   */
+  type Multiplication<
+    Num1 extends number,
+    Num2 extends number,
+    ResultArr extends unknown[] = []
+  > = Num2 extends 0
+    ? ResultArr['length']
+    : Multiplication<
+        Num1,
+        Subtract<Num2, 1>,
+        [...BuildArray<Num1>, ...ResultArr]
+      >;
+  type MultiplicationRes = Multiplication<3, 4>;
 })();
